@@ -23,7 +23,7 @@ default: &default
 development:
   <<: *default
   database: ontra_development
-  host: <%= ENV.fetch("POSTGRES_HOST") { "postgres" } %>
+  host: <%= ENV.fetch("POSTGRES_HOST") { "localhost" } %>
   username: <%= ENV.fetch("POSTGRES_USER") { "postgres" } %>
   password: <%= ENV.fetch("POSTGRES_PASSWORD") { "postgres" } %>
 
@@ -52,7 +52,7 @@ development:
 test:
   <<: *default
   database: ontra_test
-  host: <%= ENV.fetch("POSTGRES_HOST") { "postgres" } %>
+  host: <%= ENV.fetch("POSTGRES_HOST") { "localhost" } %>
   username: <%= ENV.fetch("POSTGRES_USER") { "postgres" } %>
   password: <%= ENV.fetch("POSTGRES_PASSWORD") { "postgres" } %>
 
