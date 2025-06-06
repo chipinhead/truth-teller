@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :users, only: [:show]
+      get 'users/current', to: 'users#current'
       
       # Protected route for testing JWT authentication
       get 'protected', to: 'protected#index'
