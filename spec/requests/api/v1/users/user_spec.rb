@@ -4,10 +4,12 @@ RSpec.describe "Api::V1::Users", type: :request do
   let(:headers) { { 'ACCEPT' => 'application/json', 'CONTENT_TYPE' => 'application/json' } }
 
   describe "Full user flow: register, login, get current user" do
+    let(:unique_email) { "testuser_#{Time.current.to_i}_#{rand(1000)}@example.com" }
+    
     let(:user_attributes) do
       {
         user: {
-          email: 'testuser@example.com',
+          email: unique_email,
           name: 'Test User Flow',
           password: 'password123',
           password_confirmation: 'password123'
@@ -18,7 +20,7 @@ RSpec.describe "Api::V1::Users", type: :request do
     let(:login_credentials) do
       {
         user: {
-          email: 'testuser@example.com',
+          email: unique_email,
           password: 'password123'
         }
       }
@@ -33,7 +35,7 @@ RSpec.describe "Api::V1::Users", type: :request do
       expect(response).to have_http_status(:ok)
       registration_response = JSON.parse(response.body)
       expect(registration_response['message']).to eq('Signed up.')
-      expect(registration_response['user']['email']).to eq('testuser@example.com')
+      expect(registration_response['user']['email']).to eq(unique_email)
       
       user_id = registration_response['user']['id']
 
@@ -58,7 +60,7 @@ RSpec.describe "Api::V1::Users", type: :request do
       
       # Verify current user is the same user we registered and logged in
       expect(current_user_response['id']).to eq(user_id)
-      expect(current_user_response['email']).to eq('testuser@example.com')
+      expect(current_user_response['email']).to eq(unique_email)
       expect(current_user_response['name']).to eq('Test User Flow')
       expect(current_user_response).to include('created_at', 'updated_at')
     end

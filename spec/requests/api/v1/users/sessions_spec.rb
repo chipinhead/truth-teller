@@ -2,10 +2,11 @@ require 'rails_helper'
 
 RSpec.describe "Api::V1::Users::Sessions", type: :request do
   let(:headers) { { 'ACCEPT' => 'application/json', 'CONTENT_TYPE' => 'application/json' } }
+  let(:unique_email) { "test_#{Time.current.to_i}_#{rand(1000)}@example.com" }
   
   let!(:user) do
     User.create!(
-      email: 'test@example.com',
+      email: unique_email,
       name: 'Test User',
       password: 'password123',
       password_confirmation: 'password123'
@@ -16,7 +17,7 @@ RSpec.describe "Api::V1::Users::Sessions", type: :request do
     let(:valid_credentials) do
       {
         user: {
-          email: 'test@example.com',
+          email: unique_email,
           password: 'password123'
         }
       }
@@ -25,7 +26,7 @@ RSpec.describe "Api::V1::Users::Sessions", type: :request do
     let(:invalid_credentials) do
       {
         user: {
-          email: 'test@example.com',
+          email: unique_email,
           password: 'wrongpassword'
         }
       }
@@ -39,7 +40,7 @@ RSpec.describe "Api::V1::Users::Sessions", type: :request do
 
         json_response = JSON.parse(response.body)
         expect(json_response['message']).to eq('Logged in.')
-        expect(json_response['user']).to include('email' => 'test@example.com')
+        expect(json_response['user']).to include('email' => unique_email)
         expect(json_response['user']).to include('name' => 'Test User')
         expect(json_response['user']).to include('id')
 
@@ -68,7 +69,7 @@ RSpec.describe "Api::V1::Users::Sessions", type: :request do
     let(:valid_credentials) do
       {
         user: {
-          email: 'test@example.com',
+          email: unique_email,
           password: 'password123'
         }
       }
