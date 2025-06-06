@@ -32,3 +32,4 @@ config/database.yml
 /test/version_tmp/
 /tmp/
 .DS_Store
+.help
