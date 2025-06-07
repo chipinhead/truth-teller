@@ -14,7 +14,8 @@ Devise.setup do |config|
 
     # Configure dispatch and revocation requests
     jwt.dispatch_requests = [
-      ['POST', %r{^/users/sign_in$}]
+      ['POST', %r{^/users/sign_in$}],
+      ['GET', %r{^/users/confirmation}]
     ]
     jwt.revocation_requests = [
       ['DELETE', %r{^/users/sign_out$}]
