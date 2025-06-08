@@ -21,7 +21,6 @@ RSpec.describe "Api::V1::Users::Registrations", type: :request do
         allow(user_spy).to receive(:send_confirmation_instructions)
         post "/users/confirmation", params: valid_confirmation_params.to_json, headers: headers
         expect(response).to have_http_status(:ok)
-        puts "response: #{response.body}"
         expect(user_spy).to have_received(:send_confirmation_instructions)
       end
   end

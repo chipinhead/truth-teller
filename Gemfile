@@ -61,6 +61,7 @@ group :development, :test do
   gem "rspec-rails", "~> 6.1"
   gem "factory_bot_rails"
   gem "faker"
+  gem "database_cleaner-active_record"
 
   # Environment variables
   gem "dotenv-rails"

@@ -10,12 +10,11 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get 'users/current', to: 'users#current'
-      
-      # Protected route for testing JWT authentication
-      get 'protected', to: 'protected#index'
+      resources :clients
     end
   end
 
   # Health check endpoint
   get "up" => "rails/health#show", as: :rails_health_check
+  
 end
