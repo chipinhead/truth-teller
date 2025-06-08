@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get 'users/current', to: 'users#current'
-      resources :clients
+      resources :clients, only: [:index, :create]
+      resources :documents, only: [:index, :create]
     end
   end
 
