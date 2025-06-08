@@ -12,6 +12,11 @@ Rails.application.routes.draw do
       get 'users/current', to: 'users#current'
       resources :clients, only: [:index, :create]
       resources :documents, only: [:index, :create]
+      
+      # User-Client relationship management
+      resources :users, only: [] do
+        resources :clients, only: [:index, :create], controller: 'user_clients'
+      end
     end
   end
 

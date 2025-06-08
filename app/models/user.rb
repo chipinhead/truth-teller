@@ -6,7 +6,11 @@ class User < ApplicationRecord
          :jwt_authenticatable,
          jwt_revocation_strategy: Devise::JWT::RevocationStrategies::Null
 
-  # (Optional) Add any additional validations or custom logic here.
+  # Associations
+  has_and_belongs_to_many :clients
+  has_many :created_clients, class_name: 'Client', foreign_key: 'created_user_id'
+
+  # Validations
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :name, presence: true
 end
