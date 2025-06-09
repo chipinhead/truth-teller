@@ -1,0 +1,5 @@
+class AddFileDataToDocuments < ActiveRecord::Migration[8.0]
+  def change
+    add_column :documents, :file_data, :jsonb
+  end
+end

@@ -47,6 +47,12 @@ gem "redis", ">= 4.0.1"
 gem "devise"
 gem "devise-jwt"
 
+# document storage
+gem 'shrine', '~> 3.6'
+
+# JSON:API serialization
+gem 'jsonapi-serializer'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
@@ -62,6 +68,8 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "faker"
   gem "database_cleaner-active_record"
+  gem "pry-rails"
+  gem 'pry-byebug'
 
   # Environment variables
   gem "dotenv-rails"

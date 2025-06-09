@@ -5,20 +5,31 @@ module Api
 
       def index
         documents = Document.all
-        render json: documents.map { |doc| document_with_file_url(doc) }, status: :ok
+        render json: DocumentSerializer.new(documents, is_collection: true).serializable_hash, status: :ok
       end
 
       def create
-        document = Document.new(document_data)        
-        document.file.attach(file_data)
-        
+        unless current_user.clients.exists?(document_data['client_id'])
+          render json: { error: 'You do not have access to this client' }, status: :forbidden
+          return
+        end
+
+        document = Document.new(document_data.merge(file: file_data))      
+
         if document.save
-          render json: document_with_file_url(document), status: :created
+          document.reload
+          render json: DocumentSerializer.new(document).serializable_hash, status: :created
         else
           render json: { errors: document.errors.full_messages }, status: :unprocessable_entity
         end
+      rescue ActiveRecord::RecordNotFound
+        render json: { error: 'Client not found' }, status: :not_found
       rescue JSON::ParserError
         render json: { errors: ['Invalid JSON format in document field'] }, status: :bad_request
+      rescue ActionController::ParameterMissing => e
+        render json: { error: 'File is required' }, status: :bad_request
+      rescue StandardError => e
+        render json: { errors: [e.message] }, status: :internal_server_error
       end
 
       private
@@ -29,13 +40,6 @@ module Api
 
       def file_data
         params.require(:file)
-      end
-
-      def document_with_file_url(document)
-        doc_json = document.as_json
-        doc_json['file_url'] = document.file.attached? ? url_for(document.file) : nil
-        doc_json['file_name'] = document.file.attached? ? document.file.filename.to_s : nil
-        doc_json
       end
     end
   end

@@ -1,6 +1,6 @@
 class Document < ApplicationRecord
+  include Shrine::Attachment(:file)
   belongs_to :client
-  has_one_attached :file
 
   validates :source_id, presence: true
   validates :version, presence: true, numericality: { greater_than: 0 }
