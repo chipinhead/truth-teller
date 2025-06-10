@@ -32,9 +32,20 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_10_000004) do
     t.index ["user_id", "client_id"], name: "index_clients_users_on_user_id_and_client_id"
   end
 
-# Could not dump table "document_chunks" because of following StandardError
-#   Unknown type 'vector' for column 'embedding'
-
+  create_table "document_chunks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "document_id", null: false
+    t.integer "chunk_index", null: false
+    t.integer "start", null: false
+    t.integer "end", null: false
+    t.text "content", null: false
+    t.integer "token_count", default: 0, null: false
+    t.string "embedding_model"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.vector "embedding", limit: 1536
+    t.index ["document_id", "chunk_index"], name: "index_document_chunks_on_document_id_and_chunk_index", unique: true
+    t.index ["document_id"], name: "index_document_chunks_on_document_id"
+  end
 
   create_table "documents", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "client_id", null: false
@@ -90,5 +101,4 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_10_000004) do
   add_foreign_key "clients_users", "clients"
   add_foreign_key "clients_users", "users"
   add_foreign_key "document_chunks", "documents"
-  add_foreign_key "documents", "clients"
 end
