@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_09_014357) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_10_000004) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
+  enable_extension "vector"
 
   create_table "clients", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
@@ -30,6 +31,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_09_014357) do
     t.index ["client_id", "user_id"], name: "index_clients_users_on_client_id_and_user_id", unique: true
     t.index ["user_id", "client_id"], name: "index_clients_users_on_user_id_and_client_id"
   end
+
+# Could not dump table "document_chunks" because of following StandardError
+#   Unknown type 'vector' for column 'embedding'
+
 
   create_table "documents", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "client_id", null: false
@@ -84,5 +89,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_09_014357) do
   add_foreign_key "clients", "users", column: "created_user_id"
   add_foreign_key "clients_users", "clients"
   add_foreign_key "clients_users", "users"
+  add_foreign_key "document_chunks", "documents"
   add_foreign_key "documents", "clients"
 end

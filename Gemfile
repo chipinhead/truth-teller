@@ -53,6 +53,12 @@ gem 'shrine', '~> 3.6'
 # JSON:API serialization
 gem 'jsonapi-serializer'
 
+gem 'pgvector', '~> 0.2.1'
+gem 'langchainrb', '< 0.17'
+gem 'langchainrb_rails', '~> 0.1.12'
+gem "ruby-openai", "~> 7.1.0"
+gem "neighbor"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
