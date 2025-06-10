@@ -1,6 +1,7 @@
 class DocumentChunk < ApplicationRecord
   vectorsearch
   belongs_to :document
+  after_commit :generate_embedding, on: [:create, :update]
 
   # Validations
   validates :chunk_index, presence: true, uniqueness: { scope: :document_id }

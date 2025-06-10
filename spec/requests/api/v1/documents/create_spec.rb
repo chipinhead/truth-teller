@@ -25,6 +25,8 @@ RSpec.describe "Api::V1::Documents", type: :request do
       end
 
       it "successfully creates a document with file when user has access to client" do
+        # LLM is already stubbed globally, and fake_embedding is available
+
         expect {
           post "/api/v1/documents",
                params: {
@@ -36,10 +38,18 @@ RSpec.describe "Api::V1::Documents", type: :request do
 
         expect(response).to have_http_status(:created)
         data = json_attributes(response)
+        
         expect(data['title']).to eq(valid_document_json[:title])
         expect(data['source_id']).to eq(valid_document_json[:source_id])
         expect(data['version']).to eq(valid_document_json[:version])
         expect(data['file_url']).to be_present
+
+        # this was the only way I could test the the embedding was generated (and mocked)
+        Document.last.document_chunks.each do |chunk|
+          chunk.embedding.each_with_index do |value, i|
+            expect(value).to be_within(0.000001).of(fake_embedding[i])
+          end
+        end
       end
 
       it "returns 403 when user does not have access to client" do

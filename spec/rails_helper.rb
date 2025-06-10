@@ -30,14 +30,8 @@ require 'database_cleaner/active_record'
 # Load helper modules
 require_relative 'helpers/authentication_helpers'
 require_relative 'helpers/json_api_helpers'
+require_relative 'helpers/llm_helpers'
 
-# Checks for pending migrations and applies them before tests are run.
-# If you are not using ActiveRecord, you can remove these lines.
-begin
-  ActiveRecord::Migration.maintain_test_schema!
-rescue ActiveRecord::PendingMigrationError => e
-  abort e.to_s.strip
-end
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [
@@ -48,6 +42,12 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include AuthenticationHelpers, type: :request
   config.include JSONAPIHelpers, type: :request
+  config.include LLMHelpers
+
+  # Stub LLM calls globally
+  config.before(:each) do
+    stub_llm_embedding
+  end
 
   # Database cleaner configuration
   config.before(:suite) do
