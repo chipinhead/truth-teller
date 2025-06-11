@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get 'users/current', to: 'users#current'
       resources :clients, only: [:index, :create]
       resources :documents, only: [:index, :create]
+      resources :ddq_questions, only: [:create]
       
       # User-Client relationship management
       resources :users, only: [] do

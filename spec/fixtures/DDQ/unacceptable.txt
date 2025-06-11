@@ -1,0 +1,26 @@
+Here are five questions for a Due Diligence Questionnaire, along with answers that would likely be determined to be unacceptable according to the terms outlined in the provided ILPA Model LPA Term Sheet excerpts:
+
+1.  **Question:** What are the key investment restrictions the Fund operates under?
+    **Likely Unacceptable Answer:** The Fund has significant flexibility in its investment strategy. It can invest **up to 50% of the aggregate Commitments in a single portfolio company**, has **no strict limitations on investing in Portfolio Companies outside of the Target Region**, and may invest in **speculative opportunities** or companies that charge a fee or profit share **without requiring prior written consent of the Advisory Committee**.
+
+    *   *Why it's unacceptable:* The term sheet explicitly lists restrictions, including lower percentage limits on single investments (the provided example suggests a percentage, likely lower than 50%), prohibits investing outside the Target Region (unless specified otherwise, the default is restriction), and prohibits speculative investments or investing in entities charging fees/profit shares *without* Advisory Committee consent.
+
+2.  **Question:** Describe the Management Fee structure and how it is calculated, particularly after the Commitment Period.
+    **Likely Unacceptable Answer:** The Management Fee is calculated as [•]% per annum and is **always based on the Limited Partner's initial Commitment**, regardless of the Fund's investment stage. The fee is payable quarterly in advance. **Any Fee Income generated is retained solely by the General Partner** and does not impact the Management Fee calculation.
+
+    *   *Why it's unacceptable:* While the fee is initially based on Commitment during the Commitment Period, after this period (or during investment suspension), it switches to being calculated based on the acquisition cost of investments, *reduced* by the cost of realized, written-off, or written-down investments. Furthermore, Fee Income *must* be used to reduce the Management Fee on a pro rata basis for Limited Partners.
+
+3.  **Question:** What is the standard waterfall distribution methodology for the Fund's distributable proceeds?
+    **Likely Unacceptable Answer:** The Fund distributes proceeds based on a deal-by-deal waterfall. Distributions are made first to the Limited Partner to return their Capital Contributions for that specific investment. After that, **distributions are immediately split % to the Limited Partner and% to the General Partner**. There is **no Preferred Return hurdle** that must be met before the General Partner receives Carried Interest.
+
+    *   *Why it's unacceptable:* The term sheet specifies a **Fund as a whole waterfall**, not deal-by-deal. The distribution tiers are clearly defined: first return of contributions, *then* payment of the Preferred Return, *then* a General Partner catch-up, and *finally* the subsequent split. Skipping the Preferred Return hurdle is contrary to the stated terms.
+
+4.  **Question:** Under what circumstances can Limited Partners be excused from making Capital Contributions, and how does the Fund proceed in such cases?
+    **Likely Unacceptable Answer:** A Limited Partner can be excused from a Capital Contribution obligation for **any reason they deem appropriate** by simply providing written notice to the General Partner. If a Limited Partner is excused, the General Partner will reissue the drawdown notice, and **the remaining Limited Partners are required to contribute the full excused amount**, regardless of their Remaining Commitment or a percentage cap.
+
+    *   *Why it's unacceptable:* An LP can only be excused based on a *reasonable determination* that the investment is *reasonably likely to have a material adverse effect* on them, and written notice must be given within 5 Business Days of the drawdown notice. While other LPs *may* be asked to increase their contributions, they are *not* required to contribute an additional amount that exceeds the lesser of their Remaining Commitment and% of their total original required contributions.
+
+5.  **Question:** What rights do Limited Partners have regarding the removal of the General Partner?
+    **Likely Unacceptable Answer:** Limited Partners **cannot remove the General Partner without cause**; removal is only possible if specific "Removal Conduct" has been confirmed by a court. If the General Partner were somehow removed, they **would still be entitled to receive their full share of Carried Interest** on all Portfolio Investments made by the Fund, both before and after their removal.
+
+    *   *Why it's unacceptable:* The term sheet explicitly grants Limited Partners the right to remove the General Partner **without cause** by a written notice approved by at least 75% in Interest. Upon removal without cause, the General Partner is entitled to receive further distributions of Carried Interest related to investments made *before* removal, but this amount is explicitly subject to an **immediate and automatic reduction**. They are *not* entitled to Carried Interest on investments made *after* removal.
