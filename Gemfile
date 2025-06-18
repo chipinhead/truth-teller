@@ -53,7 +53,7 @@ gem 'shrine', '~> 3.6'
 # JSON:API serialization
 gem 'jsonapi-serializer'
 
-gem 'pgvector', '~> 0.2.1'
+gem 'pgvector', '~> 0.3.2'
 gem 'langchainrb', '< 0.17'
 gem 'langchainrb_rails', '~> 0.1.12'
 gem "ruby-openai", "~> 7.1.0"
