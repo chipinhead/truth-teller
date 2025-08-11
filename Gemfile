@@ -56,7 +56,7 @@ gem 'jsonapi-serializer'
 gem 'pgvector', '~> 0.2.1'
 gem 'langchainrb', '< 0.17'
 gem 'langchainrb_rails', '~> 0.1.12'
-gem "ruby-openai", "~> 7.1.0"
+gem "ruby-openai", "~> 8.2.0"
 gem "neighbor"
 
 group :development, :test do
