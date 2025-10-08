@@ -38,7 +38,7 @@ gem "thruster", require: false
 # gem "rack-cors"
 
 # Use Sidekiq for background job processing
-gem "sidekiq", "~> 7.2"
+gem "sidekiq", "~> 8.0"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", ">= 4.0.1"
