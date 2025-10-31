@@ -244,7 +244,7 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.5.9)
-    pgvector (0.2.2)
+    pgvector (0.3.2)
     pp (0.6.2)
       prettyprint
     pragmatic_segmenter (0.3.24)
@@ -455,7 +455,7 @@ DEPENDENCIES
   langchainrb_rails (~> 0.1.12)
   neighbor
   pg (~> 1.1)
-  pgvector (~> 0.2.1)
+  pgvector (~> 0.3.2)
   pry-byebug
   pry-rails
   puma (>= 5.0)
